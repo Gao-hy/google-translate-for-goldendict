@@ -96,10 +96,10 @@ class GoogleTranslate(object):
         example {color: #008080;}
         gray {color: #606060;}
         </style>"""
-        self.result = re.sub(r'(#.*)', r'<pos><b>\1</b></pos>', self.result)
-        self.result = re.sub(r'([*].*)', r'<example>\1</example>', self.result)
-        self.result = re.sub(r'(0_0:.*?of)(.*)', r'<gray>\1</gray>\2', self.result)
-        match = re.compile(rf"({re.escape('^_^')}: Translate)(.*)(To)(.*)")
+        self.result = re.sub(r'(?m)^(#.*)', r'<pos><b>\1</b></pos>', self.result)
+        self.result = re.sub(r'(?m)^([*].*)', r'<example>\1</example>', self.result)
+        self.result = re.sub(r'(?m)^(0_0:.*?of)(.*)', r'<gray>\1</gray>\2', self.result)
+        match = re.compile(rf"(?m)^({re.escape('^_^')}: Translate)(.*)(To)(.*)")
         self.result = match.sub(r'<gray>\1</gray>\2<gray>\3</gray>\4', self.result)
         self.result = f'<html>\n<head>\n{css_text}\n</head>\n<body>\n<p>{self.result}</p>\n</body>\n</html>'
 
