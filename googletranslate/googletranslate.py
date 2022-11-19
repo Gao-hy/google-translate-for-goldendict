@@ -79,8 +79,8 @@ class GoogleTranslate(object):
 
     def get_resp(self, url):
         proxies = {
-            'http': f'http://{self.http_proxy.strip() if self.http_proxy.strip() else "127.0.0.1:1080"}',
-            'https': f'http://{self.http_proxy.strip() if self.http_proxy.strip() else "127.0.0.1:1080"}'
+            'http': f'http://{self.http_proxy.strip() if self.http_proxy.strip() else "127.0.0.1:10808"}',
+            'https': f'http://{self.http_proxy.strip() if self.http_proxy.strip() else "127.0.0.1:10808"}'
         }
         base_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0'}
         session = requests.Session()
